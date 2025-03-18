@@ -1,19 +1,22 @@
-FROM openjdk:17-jdk-slim
+# 使用 Maven 官方镜像构建 JAR
+FROM maven:3.9.6-eclipse-temurin-21 AS build
 WORKDIR /app
 
-# 复制 Maven Wrapper（如果没有就手动添加到仓库）
-COPY .mvn/ .mvn/
-COPY mvnw pom.xml ./
+# 复制项目代码
+COPY . .
 
 # 赋予 mvnw 执行权限
 RUN chmod +x mvnw
 
-# 让 Maven 预下载依赖（加速构建）
-RUN ./mvnw dependency:go-offline
+# 预下载依赖 & 构建 JAR
+RUN ./mvnw clean package -DskipTests
 
-# 复制项目代码并编译
-COPY src ./src
-RUN ./mvnw clean package
+# 使用 JDK 运行 Spring Boot
+FROM eclipse-temurin:21
+WORKDIR /app
+
+# 复制 JAR 文件
+COPY --from=build /app/target/eneloop-0.0.1-SNAPSHOT.jar app.jar
 
 # 运行 Spring Boot 应用
 CMD ["java", "-jar", "target/*.jar"]
