@@ -1,0 +1,47 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gel.web.eneloop.mapper.PowerBankMapper">
+
+    <!-- 查询所有 PowerBank 记录 -->
+    <select id="getAllPowerBanks" resultType="com.gel.web.eneloop.pojo.PowerBank">
+        SELECT power_bank_id AS powerBankId,
+               battery_state AS batteryState,
+               power_bank_state AS powerBankState,
+               usage_time AS usageTime
+        FROM power_bank;
+    </select>
+
+    <!-- 通过 ID 查询 PowerBank -->
+    <select id="getPowerBankById" parameterType="int" resultType="com.gel.web.eneloop.pojo.PowerBank">
+        SELECT power_bank_id AS powerBankId,
+               battery_state AS batteryState,
+               power_bank_state AS powerBankState,
+               usage_time AS usageTime
+        FROM power_bank
+        WHERE power_bank_id = #{powerBankId};
+    </select>
+
+    <!-- 插入新的 PowerBank 记录 -->
+    <insert id="save" parameterType="com.gel.web.eneloop.pojo.PowerBank">
+        INSERT INTO power_bank (battery_state, power_bank_state, usage_time)
+        VALUES (#{batteryState}, #{powerBankState}, #{usageTime});
+    </insert>
+
+    <!-- 更新 PowerBank 记录 -->
+    <update id="updatePowerBank" parameterType="com.gel.web.eneloop.pojo.PowerBank">
+        UPDATE power_bank
+        SET battery_state = #{batteryState},
+            power_bank_state = #{powerBankState},
+            usage_time = #{usageTime}
+        WHERE power_bank_id = #{powerBankId};
+    </update>
+
+    <!-- 删除 PowerBank 记录 -->
+    <delete id="deletePowerBankById" parameterType="int">
+        DELETE FROM power_bank WHERE power_bank_id = #{powerBankId};
+    </delete>
+
+</mapper>
+

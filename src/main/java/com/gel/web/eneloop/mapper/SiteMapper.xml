@@ -1,0 +1,21 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gel.web.eneloop.mapper.SiteMapper">
+
+    <select id="getAllSites" resultType="com.gel.web.eneloop.pojo.Site">
+        SELECT site_id AS siteId,
+               dropbox_id AS dropboxId,
+               capacity AS capacity,
+               available_reserves AS availableReserves,
+               current_reserves AS currentReserves,
+               location AS location,
+               service_area_id AS serviceAreaId,
+               docking_unit_list AS dockingUnitList,
+               site_state AS siteState,
+               longitude AS longitude,
+               latitude AS latitude
+        FROM site;
+    </select>
+</mapper>
