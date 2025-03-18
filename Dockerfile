@@ -6,10 +6,12 @@ WORKDIR /app
 COPY . .
 
 # 确保 mvnw 可执行
-RUN chmod +x mvnw
+#RUN chmod +x mvnw
 
 # 预下载依赖 & 构建 JAR
-RUN ./mvnw clean package -DskipTests
+#RUN ./mvnw clean package -DskipTests
+
+RUN chmod +x mvnw && ./mvnw clean package -DskipTests && ls -l target/
 
 # 第二阶段：运行 Spring Boot
 FROM eclipse-temurin:21
