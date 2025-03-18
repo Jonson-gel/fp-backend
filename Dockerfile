@@ -4,6 +4,11 @@ WORKDIR /app
 # 复制 Maven Wrapper（如果没有就手动添加到仓库）
 COPY .mvn/ .mvn/
 COPY mvnw pom.xml ./
+
+# 给予执行权限 ✅
+RUN chmod +x mvnw
+
+# 让 Maven 预下载依赖（加速构建）
 RUN ./mvnw dependency:go-offline
 
 # 复制项目代码并编译
