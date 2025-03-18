@@ -5,6 +5,9 @@ WORKDIR /app
 COPY .mvn/ .mvn/
 COPY mvnw pom.xml ./
 
+# 赋予 mvnw 执行权限
+RUN chmod +x mvnw
+
 # 让 Maven 预下载依赖（加速构建）
 RUN ./mvnw dependency:go-offline
 
