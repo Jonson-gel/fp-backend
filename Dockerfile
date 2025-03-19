@@ -6,6 +6,10 @@ WORKDIR /app
 COPY . .
 RUN ls -l /app
 
+# 确保 Maven 配置正常
+ENV MAVEN_CONFIG ""
+RUN mkdir -p "$MAVEN_CONFIG"
+
 # 确保 mvnw 可执行
 RUN chmod +x mvnw
 
