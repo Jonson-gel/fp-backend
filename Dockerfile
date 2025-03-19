@@ -12,7 +12,7 @@ RUN ls -l /app
 # 预下载依赖 & 构建 JAR
 #RUN ./mvnw clean package -DskipTests
 
-RUN chmod u+x mvnw && ./mvnw clean package -DskipTests && ls -l target/
+RUN chmod u+x mvnw && ./mvnw clean package -DskipTests && ls -l /app
 
 # 第二阶段：运行 Spring Boot
 FROM eclipse-temurin:21
