@@ -13,6 +13,7 @@ RUN ls -l /app
 #RUN ./mvnw clean package -DskipTests
 
 RUN chmod u+x mvnw && chmod u+x mvnw.cmd && ./mvnw clean package -DskipTests && ls -l /app
+RUN ls -l /app/target
 
 # 第二阶段：运行 Spring Boot
 FROM eclipse-temurin:21
