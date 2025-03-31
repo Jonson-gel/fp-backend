@@ -12,6 +12,7 @@ RUN chmod +x mvnw
 # 显示 Maven 版本，确保可用
 RUN ./mvnw --version
 
+#
 RUN ls -l /app/.mvn/wrapper
 
 # 预下载依赖 & 构建 JAR
