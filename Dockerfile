@@ -18,8 +18,8 @@ RUN ls -l /app/.mvn/wrapper
 # 预下载依赖 & 构建 JAR
 # RUN ./mvnw clean package -DskipTests --batch-mode
 # RUN sh -c "./mvnw clean package -DskipTests --batch-mode"
-unset MAVEN_CONFIG
-RUN ./mvnw clean package -DskipTests --batch-mode
+
+RUN unset MAVEN_CONFIG ./mvnw clean package -DskipTests --batch-mode
 
 
 # 检查 target 目录是否生成
