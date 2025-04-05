@@ -10,6 +10,8 @@ public class PowerBank {
 
     private int usageTime;
 
+    private int siteId;
+
     public int getPowerBankId() {
         return powerBankId;
     }
@@ -42,13 +44,22 @@ public class PowerBank {
         this.usageTime = usage_time;
     }
 
+    public int getSiteId() {
+        return siteId;
+    }
+
+    public void setSiteId(int siteId) {
+        this.siteId = siteId;
+    }
+
     @Override
     public String toString() {
         return "PowerBank{" +
                 "powerBankId=" + powerBankId +
                 ", batteryState=" + batteryState +
                 ", powerBankState=" + powerBankState +
-                ", usage_time=" + usageTime +
+                ", usageTime=" + usageTime +
+                ", siteId=" + siteId +
                 '}';
     }
 }

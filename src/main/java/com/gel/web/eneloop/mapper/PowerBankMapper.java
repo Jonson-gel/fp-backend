@@ -7,4 +7,8 @@ import org.apache.ibatis.annotations.Mapper;
 public interface PowerBankMapper {
 
     public void save(PowerBank powerBank);
+
+    public PowerBank getPowerBankById(PowerBank powerBank);
+
+    public PowerBank[] getPowerBankBySiteId(PowerBank powerBank);
 }

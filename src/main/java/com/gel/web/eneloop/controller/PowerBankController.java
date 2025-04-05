@@ -15,13 +15,27 @@ public class PowerBankController {
     @Autowired
     private PowerBankService powerBankService;
 
-    @GetMapping("power_bank")
+    @PostMapping("power_bank")
     @ResponseBody
-    public String getById(PowerBank powerBank){
+    public String save(PowerBank powerBank){
         System.out.println(powerBank);
         //调用服务层
         powerBankService.save(powerBank);
         return "success";
+    }
+
+    @GetMapping("power_bank/id")
+    @ResponseBody
+    public PowerBank getPowerBankById(PowerBank powerBank){
+        //调用服务层
+        return powerBankService.getPowerBankById(powerBank);
+    }
+
+    @GetMapping("power_bank/site_id")
+    @ResponseBody
+    public PowerBank[] getPowerBankBySiteId(PowerBank powerBank){
+        //调用服务层
+        return powerBankService.getPowerBankBySiteId(powerBank);
     }
 
 

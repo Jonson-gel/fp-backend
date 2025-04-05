@@ -9,7 +9,8 @@
         SELECT power_bank_id AS powerBankId,
                battery_state AS batteryState,
                power_bank_state AS powerBankState,
-               usage_time AS usageTime
+               usage_time AS usageTime,
+               site_id AS siteId
         FROM power_bank;
     </select>
 
@@ -18,15 +19,27 @@
         SELECT power_bank_id AS powerBankId,
                battery_state AS batteryState,
                power_bank_state AS powerBankState,
-               usage_time AS usageTime
+               usage_time AS usageTime,
+               site_id AS siteId
         FROM power_bank
         WHERE power_bank_id = #{powerBankId};
     </select>
 
+    <!-- 通过 site ID 查询 PowerBank -->
+    <select id="getPowerBankBySiteId" parameterType="int" resultType="com.gel.web.eneloop.pojo.PowerBank">
+        SELECT power_bank_id AS powerBankId,
+               battery_state AS batteryState,
+               power_bank_state AS powerBankState,
+               usage_time AS usageTime,
+               site_id AS siteId
+        FROM power_bank
+        WHERE site_id = #{siteId};
+    </select>
+
     <!-- 插入新的 PowerBank 记录 -->
     <insert id="save" parameterType="com.gel.web.eneloop.pojo.PowerBank">
-        INSERT INTO power_bank (battery_state, power_bank_state, usage_time)
-        VALUES (#{batteryState}, #{powerBankState}, #{usageTime});
+        INSERT INTO power_bank (battery_state, power_bank_state, usage_time, site_id)
+        VALUES (#{batteryState}, #{powerBankState}, #{usageTime}, #{siteId});
     </insert>
 
     <!-- 更新 PowerBank 记录 -->
@@ -34,7 +47,8 @@
         UPDATE power_bank
         SET battery_state = #{batteryState},
             power_bank_state = #{powerBankState},
-            usage_time = #{usageTime}
+            usage_time = #{usageTime},
+            site_id AS siteId
         WHERE power_bank_id = #{powerBankId};
     </update>
 

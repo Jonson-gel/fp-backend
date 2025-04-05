@@ -15,4 +15,14 @@ public class PowerBankImpl implements PowerBankService{
     public void save(PowerBank powerBank) {
         powerBankMapper.save(powerBank);
     }
+
+    @Override
+    public PowerBank getPowerBankById(PowerBank powerBank){
+        return powerBankMapper.getPowerBankById(powerBank);
+    }
+
+    @Override
+    public PowerBank[] getPowerBankBySiteId(PowerBank powerBank){
+        return powerBankMapper.getPowerBankBySiteId(powerBank);
+    }
 }
