@@ -7,7 +7,6 @@ public class Site {
     private int currentReserves;
     private String location;
     private int serviceAreaId;
-    private String dockingUnitList;
     private int siteState;
     private int longitude;
     private int latitude;
@@ -60,14 +59,6 @@ public class Site {
         this.serviceAreaId = serviceAreaId;
     }
 
-    public String getDockingUnitList() {
-        return dockingUnitList;
-    }
-
-    public void setDockingUnitList(String dockingUnitList) {
-        this.dockingUnitList = dockingUnitList;
-    }
-
     public int getSiteState() {
         return siteState;
     }
@@ -101,7 +92,6 @@ public class Site {
                 ", currentReserves=" + currentReserves +
                 ", location='" + location + '\'' +
                 ", serviceAreaId=" + serviceAreaId +
-                ", dockingUnitList='" + dockingUnitList + '\'' +
                 ", siteState=" + siteState +
                 ", longitude=" + longitude +
                 ", latitude=" + latitude +

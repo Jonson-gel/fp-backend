@@ -12,7 +12,6 @@
                current_reserves AS currentReserves,
                location AS location,
                service_area_id AS serviceAreaId,
-               docking_unit_list AS dockingUnitList,
                site_state AS siteState,
                longitude AS longitude,
                latitude AS latitude
