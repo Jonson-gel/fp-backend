@@ -4,17 +4,60 @@
 
 <mapper namespace="com.gel.web.eneloop.mapper.SiteMapper">
 
+    <!-- 查询所有 Site 记录 -->
     <select id="getAllSites" resultType="com.gel.web.eneloop.pojo.Site">
         SELECT site_id AS siteId,
-               dropbox_id AS dropboxId,
-               capacity AS capacity,
+               capacity,
                available_reserves AS availableReserves,
                current_reserves AS currentReserves,
-               location AS location,
+               location,
                service_area_id AS serviceAreaId,
                site_state AS siteState,
-               longitude AS longitude,
-               latitude AS latitude
+               longitude,
+               latitude
         FROM site;
     </select>
+
+    <!-- 通过 ID 查询 Site -->
+    <select id="getSiteById" parameterType="int" resultType="com.gel.web.eneloop.pojo.Site">
+        SELECT site_id AS siteId,
+               capacity,
+               available_reserves AS availableReserves,
+               current_reserves AS currentReserves,
+               location,
+               service_area_id AS serviceAreaId,
+               site_state AS siteState,
+               longitude,
+               latitude
+        FROM site
+        WHERE site_id = #{siteId};
+    </select>
+
+    <!-- 插入新的 Site 记录 -->
+    <insert id="save" parameterType="com.gel.web.eneloop.pojo.Site">
+        INSERT INTO site (capacity, available_reserves, current_reserves, location,
+                          service_area_id, site_state, longitude, latitude)
+        VALUES (#{capacity}, #{availableReserves}, #{currentReserves}, #{location},
+                #{serviceAreaId}, #{siteState}, #{longitude}, #{latitude});
+    </insert>
+
+    <!-- 更新 Site 记录 -->
+    <update id="updateSite" parameterType="com.gel.web.eneloop.pojo.Site">
+        UPDATE site
+        SET capacity = #{capacity},
+            available_reserves = #{availableReserves},
+            current_reserves = #{currentReserves},
+            location = #{location},
+            service_area_id = #{serviceAreaId},
+            site_state = #{siteState},
+            longitude = #{longitude},
+            latitude = #{latitude}
+        WHERE site_id = #{siteId};
+    </update>
+
+    <!-- 删除 Site 记录 -->
+    <delete id="deleteSiteById" parameterType="int">
+        DELETE FROM site WHERE site_id = #{siteId};
+    </delete>
+
 </mapper>

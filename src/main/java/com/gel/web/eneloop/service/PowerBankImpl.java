@@ -5,6 +5,8 @@ import com.gel.web.eneloop.pojo.PowerBank;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
+import java.util.List;
+
 @Service
 public class PowerBankImpl implements PowerBankService{
 
@@ -17,12 +19,22 @@ public class PowerBankImpl implements PowerBankService{
     }
 
     @Override
-    public PowerBank getPowerBankById(PowerBank powerBank){
-        return powerBankMapper.getPowerBankById(powerBank);
+    public PowerBank getPowerBankById(int id){
+        return powerBankMapper.getPowerBankById(id);
     }
 
     @Override
-    public PowerBank[] getPowerBankBySiteId(PowerBank powerBank){
-        return powerBankMapper.getPowerBankBySiteId(powerBank);
+    public List<PowerBank> getPowerBankBySiteId(int id){
+        return powerBankMapper.getPowerBankBySiteId(id);
+    }
+
+    @Override
+    public List<PowerBank> getAllPowerBanks(){
+        return powerBankMapper.getAllPowerBanks();
+    }
+
+    @Override
+    public void updatePowerBankState(int powerBankId, int powerBankState){
+        powerBankMapper.updatePowerBankState(powerBankId, powerBankState);
     }
 }

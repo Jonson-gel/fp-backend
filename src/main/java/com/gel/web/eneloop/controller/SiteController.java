@@ -20,4 +20,10 @@ public class SiteController {
     public List<Site> getAllSites(){
         return siteService.getAllSites();
     }
+
+    @GetMapping("site/{id}")
+    @ResponseBody
+    public Site getSiteById(@PathVariable("id") int id){
+        return siteService.getSiteById(id);
+    }
 }

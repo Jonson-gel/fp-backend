@@ -6,4 +6,6 @@ import java.util.List;
 
 public interface SiteService {
     public List<Site> getAllSites();
+
+    public Site getSiteById(int id);
 }

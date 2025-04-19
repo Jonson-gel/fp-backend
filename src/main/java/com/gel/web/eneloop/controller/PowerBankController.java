@@ -4,10 +4,9 @@ import com.gel.web.eneloop.pojo.PowerBank;
 import com.gel.web.eneloop.service.PowerBankService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PostMapping;
-import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
+
+import java.util.List;
 
 @Controller
 public class PowerBankController {
@@ -24,18 +23,25 @@ public class PowerBankController {
         return "success";
     }
 
-    @GetMapping("power_bank/id")
+    @GetMapping("power_bank/{id}")
     @ResponseBody
-    public PowerBank getPowerBankById(PowerBank powerBank){
+    public PowerBank getPowerBankById(@PathVariable("id") int id){
         //调用服务层
-        return powerBankService.getPowerBankById(powerBank);
+        return powerBankService.getPowerBankById(id);
     }
 
-    @GetMapping("power_bank/site_id")
+    @GetMapping("power_bank/site/{id}")
     @ResponseBody
-    public PowerBank[] getPowerBankBySiteId(PowerBank powerBank){
+    public List<PowerBank> getPowerBankBySiteId(@PathVariable("id") int id){
         //调用服务层
-        return powerBankService.getPowerBankBySiteId(powerBank);
+        return powerBankService.getPowerBankBySiteId(id);
+    }
+
+    @GetMapping("power_bank")
+    @ResponseBody
+    public List<PowerBank> getAllPowerBanks(){
+        //调用服务层
+        return powerBankService.getAllPowerBanks();
     }
 
 

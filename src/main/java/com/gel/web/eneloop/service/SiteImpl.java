@@ -17,4 +17,8 @@ public class SiteImpl implements SiteService{
     public List<Site> getAllSites(){
         return siteMapper.getAllSites();
     }
+
+    public Site getSiteById(int id){
+        return siteMapper.getSiteById(id);
+    };
 }

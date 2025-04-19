@@ -52,6 +52,13 @@
         WHERE power_bank_id = #{powerBankId};
     </update>
 
+    <!-- 更新 PowerBank 记录 -->
+    <update id="updatePowerBankState" parameterType="int">
+        UPDATE power_bank
+        SET power_bank_state = #{powerBankState}
+        WHERE power_bank_id = #{powerBankId};
+    </update>
+
     <!-- 删除 PowerBank 记录 -->
     <delete id="deletePowerBankById" parameterType="int">
         DELETE FROM power_bank WHERE power_bank_id = #{powerBankId};

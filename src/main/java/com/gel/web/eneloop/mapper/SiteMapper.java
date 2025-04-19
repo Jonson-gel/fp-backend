@@ -8,4 +8,6 @@ import java.util.List;
 @Mapper
 public interface SiteMapper {
     public List<Site> getAllSites();
+
+    public Site getSiteById(int id);
 }
