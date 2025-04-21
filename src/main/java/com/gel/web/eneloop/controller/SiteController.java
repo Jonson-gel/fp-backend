@@ -14,7 +14,7 @@ public class SiteController {
     @Autowired
     private SiteService siteService;
 
-    @CrossOrigin(origins = "https://jonson-gel.github.io")  // 允许的前端地址
+    @CrossOrigin(origins = "*")  // 允许的前端地址
     @GetMapping("site")
     @ResponseBody
     public List<Site> getAllSites(){
