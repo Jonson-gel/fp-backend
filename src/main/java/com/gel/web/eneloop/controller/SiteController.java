@@ -14,7 +14,7 @@ public class SiteController {
     @Autowired
     private SiteService siteService;
 
-    @CrossOrigin(origins = "https://start-navy.vercel.app")  // 允许的前端地址
+//    @CrossOrigin(origins = "https://start-navy.vercel.app")  // 允许的前端地址
     @GetMapping("site")
     @ResponseBody
     public List<Site> getAllSites(){
