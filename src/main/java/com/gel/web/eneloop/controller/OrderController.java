@@ -13,6 +13,7 @@ import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -65,5 +66,11 @@ public class OrderController {
     @ResponseBody
     public Order getOrderById(@PathVariable("id") int orderId){
         return orderService.getOrderById(orderId);
+    }
+
+    @GetMapping("/order/user/{id}")
+    @ResponseBody
+    public List<Order> getOrderByUserId(@PathVariable("id") int userId){
+        return orderService.getOrderByUserId(userId);
     }
 }

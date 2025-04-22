@@ -29,6 +29,19 @@
         WHERE order_id = #{orderId};
     </select>
 
+    <!-- 通过 UserID 查询订单 -->
+    <select id="getOrderByUserId" parameterType="int" resultType="com.gel.web.eneloop.pojo.Order">
+        SELECT order_id AS orderId,
+               user_id AS userId,
+               power_bank_id AS powerBankId,
+               start_time AS startTime,
+               end_time AS endTime,
+               fee,
+               order_state AS orderState
+        FROM `order`
+        WHERE user_id = #{userId};
+    </select>
+
     <!-- 插入新的订单 -->
     <insert id="createOrder" parameterType="com.gel.web.eneloop.pojo.Order" useGeneratedKeys="true" keyProperty="orderId">
         INSERT INTO `order` (user_id, power_bank_id, start_time, order_state)

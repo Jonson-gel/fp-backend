@@ -5,6 +5,8 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 import com.gel.web.eneloop.mapper.OrderMapper;
 
+import java.util.List;
+
 @Service
 public class OrderImpl implements OrderService {
 
@@ -40,5 +42,10 @@ public class OrderImpl implements OrderService {
     @Override
     public void endOrder(Order order){
         orderMapper.endOrder(order);
+    }
+
+    @Override
+    public List<Order> getOrderByUserId(int userId){
+        return orderMapper.getOrderByUserId(userId);
     }
 }
