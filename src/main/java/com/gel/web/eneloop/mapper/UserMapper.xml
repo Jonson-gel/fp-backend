@@ -1,0 +1,67 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gel.web.eneloop.mapper.UserMapper">
+
+    <!-- 查询所有用户 -->
+    <select id="getAllUsers" resultType="com.gel.web.eneloop.pojo.User">
+        SELECT user_id AS userId,
+               name,
+               phone_number AS phoneNumber,
+               balance,
+               account_state AS accountState
+        FROM user;
+    </select>
+
+    <!-- 通过 ID 查询用户 -->
+    <select id="getUserById" parameterType="int" resultType="com.gel.web.eneloop.pojo.User">
+        SELECT user_id AS userId,
+               name,
+               phone_number AS phoneNumber,
+               balance,
+               account_state AS accountState
+        FROM user
+        WHERE user_id = #{userId};
+    </select>
+
+    <!-- 通过 name 查询用户 -->
+    <select id="getUserByName" parameterType="String" resultType="com.gel.web.eneloop.pojo.User">
+        SELECT user_id AS userId,
+               name,
+               phone_number AS phoneNumber,
+               balance,
+               account_state AS accountState
+        FROM user
+        WHERE name = #{name};
+    </select>
+
+    <!-- 插入新用户 -->
+    <insert id="save" parameterType="com.gel.web.eneloop.pojo.User">
+        INSERT INTO user (name, phone_number, balance, account_state)
+        VALUES (#{name}, #{phoneNumber}, #{balance}, #{accountState});
+    </insert>
+
+    <!-- 更新用户信息 -->
+    <update id="updateUser" parameterType="com.gel.web.eneloop.pojo.User">
+        UPDATE user
+        SET name = #{name},
+            phone_number = #{phoneNumber},
+            balance = #{balance},
+            account_state = #{accountState}
+        WHERE user_id = #{userId};
+    </update>
+
+    <!-- 更新用户balance -->
+    <update id="updateUserBalance" parameterType="com.gel.web.eneloop.pojo.User">
+        UPDATE user
+        SET balance = #{balance}
+        WHERE user_id = #{userId};
+    </update>
+
+    <!-- 删除用户 -->
+    <delete id="deleteUserById" parameterType="int">
+        DELETE FROM user WHERE user_id = #{userId};
+    </delete>
+
+</mapper>

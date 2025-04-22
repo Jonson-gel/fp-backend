@@ -18,6 +18,7 @@ public class SiteImpl implements SiteService{
         return siteMapper.getAllSites();
     }
 
+    @Override
     public Site getSiteById(int id){
         return siteMapper.getSiteById(id);
     };

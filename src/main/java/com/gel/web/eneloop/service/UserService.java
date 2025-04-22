@@ -1,0 +1,7 @@
+package com.gel.web.eneloop.service;
+
+import com.gel.web.eneloop.pojo.User;
+
+public interface UserService {
+    public User getUserByName(String name);
+}
