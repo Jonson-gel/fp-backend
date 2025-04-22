@@ -53,7 +53,7 @@
     </update>
 
     <!-- 更新用户balance -->
-    <update id="updateUserBalance" parameterType="com.gel.web.eneloop.pojo.User">
+    <update id="updateUserBalance" parameterType="map">
         UPDATE user
         SET balance = #{balance}
         WHERE user_id = #{userId};

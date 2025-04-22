@@ -4,9 +4,7 @@ import com.gel.web.eneloop.pojo.User;
 import com.gel.web.eneloop.service.UserService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
-import org.springframework.web.bind.annotation.GetMapping;
-import org.springframework.web.bind.annotation.PathVariable;
-import org.springframework.web.bind.annotation.ResponseBody;
+import org.springframework.web.bind.annotation.*;
 
 @Controller
 public class UserController {
@@ -18,5 +16,10 @@ public class UserController {
     @ResponseBody
     public User getUserByName(@PathVariable("name") String name){
         return userService.getUserByName(name);
+    }
+
+    @PostMapping("/user/balance/{userId}/{balance}")
+    public void updateBalance(@PathVariable int userId, @PathVariable int balance) {
+        userService.updateUserBalance(userId, balance);
     }
 }

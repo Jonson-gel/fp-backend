@@ -15,4 +15,10 @@ public class UserImpl implements UserService{
     public User getUserByName(String name){
         return userMapper.getUserByName(name);
     }
+
+    @Override
+    public void updateUserBalance(int userId, int balance){
+        userMapper.updateUserBalance(userId, balance);
+    }
+
 }
