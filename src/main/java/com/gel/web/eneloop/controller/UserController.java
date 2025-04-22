@@ -19,7 +19,8 @@ public class UserController {
     }
 
     @PostMapping("/user/balance/{userId}/{balance}")
-    public void updateBalance(@PathVariable int userId, @PathVariable int balance) {
+    @ResponseBody
+    public void updateBalance(@PathVariable("userId") int userId, @PathVariable("balance") int balance) {
         userService.updateUserBalance(userId, balance);
     }
 }
