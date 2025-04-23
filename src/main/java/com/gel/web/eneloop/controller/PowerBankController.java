@@ -44,5 +44,9 @@ public class PowerBankController {
         return powerBankService.getAllPowerBanks();
     }
 
+    @PostMapping("/power_bank/return/{id}")
+    public void rentPowerBank(@PathVariable("id") int powerBankId){
+        powerBankService.updatePowerBankState(powerBankId, 1);
+    }
 
 }

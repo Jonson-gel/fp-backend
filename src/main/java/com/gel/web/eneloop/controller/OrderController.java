@@ -25,11 +25,11 @@ public class OrderController {
     @Autowired
     private PowerBankService powerBankService;
 
-    @PostMapping("/power_bank/rent/{id}")
+    @PostMapping("/power_bank/rent/{powerBankId}/{userId}")
     @ResponseBody
-    public Map<String, Object> rentPowerBank(@PathVariable("id") int powerBankId) {
+    public Map<String, Object> rentPowerBank(@PathVariable("powerBankId") int powerBankId, @PathVariable("userId") int userId) {
         // 示例：用户ID写死为1
-        int userId = 1;
+        //int userId = 1;
 
         // 更新充电宝状态（假设你已有此方法）
         powerBankService.updatePowerBankState(powerBankId, 2);
