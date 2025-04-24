@@ -6,6 +6,7 @@ import com.gel.web.eneloop.service.OrderService;
 import com.gel.web.eneloop.service.PaymentService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
@@ -39,7 +40,7 @@ public class PaymentController {
         paymentService.createTrans(userId, amount, 3);
     }
 
-    @PostMapping("/payment/{userId}")
+    @GetMapping("/payment/{userId}")
     @ResponseBody
     public List<Payment> getPaymentByUserId(@PathVariable("userId") int userId){
         return paymentService.getPaymentByUserId(userId);
