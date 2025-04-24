@@ -30,7 +30,7 @@ public class PaymentImpl implements PaymentService{
     public void createTrans(int userId, int amount, int paymentState){
         Payment payment = new Payment();
         payment.setUserId(userId);
-        payment.setOrderId(0);
+        payment.setOrderId(1);
         payment.setFee(amount);
         payment.setPaymentState(paymentState);
 
