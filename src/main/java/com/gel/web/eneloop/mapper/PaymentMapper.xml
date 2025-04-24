@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gel.web.eneloop.mapper.PaymentMapper">
+
+    <!-- 查询所有付款记录 -->
+    <select id="getAllPayments" resultType="com.gel.web.eneloop.pojo.Payment">
+        SELECT payment_id AS paymentId,
+               user_id AS userId,
+               order_id AS orderId,
+               fee,
+               payment_time AS paymentTime,
+               payment_state AS paymentState
+        FROM payment;
+    </select>
+
+    <!-- 根据 ID 查询付款记录 -->
+    <select id="getPaymentById" parameterType="int" resultType="com.gel.web.eneloop.pojo.Payment">
+        SELECT payment_id AS paymentId,
+               user_id AS userId,
+               order_id AS orderId,
+               fee,
+               payment_time AS paymentTime,
+               payment_state AS paymentState
+        FROM payment
+        WHERE payment_id = #{paymentId};
+    </select>
+
+    <!-- 根据 user ID 查询付款记录 -->
+    <select id="getPaymentByUserId" parameterType="int" resultType="com.gel.web.eneloop.pojo.Payment">
+        SELECT payment_id AS paymentId,
+               user_id AS userId,
+               order_id AS orderId,
+               fee,
+               payment_time AS paymentTime,
+               payment_state AS paymentState
+        FROM payment
+        WHERE user_id = #{userId};
+    </select>
+
+    <!-- 插入新的付款记录 -->
+    <insert id="createPayment" parameterType="com.gel.web.eneloop.pojo.Payment">
+        INSERT INTO payment (user_id, order_id, fee, payment_time, payment_state)
+        VALUES (#{userId}, #{orderId}, #{fee}, #{paymentTime}, #{paymentState});
+    </insert>
+
+    <!-- 更新付款记录 -->
+    <update id="updatePayment" parameterType="com.gel.web.eneloop.pojo.Payment">
+        UPDATE payment
+        SET user_id = #{userId},
+            order_id = #{orderId},
+            fee = #{fee},
+            payment_time = #{paymentTime},
+            payment_state = #{paymentState}
+        WHERE payment_id = #{paymentId};
+    </update>
+
+    <!-- 删除付款记录 -->
+    <delete id="deletePaymentById" parameterType="int">
+        DELETE FROM payment WHERE payment_id = #{paymentId};
+    </delete>
+
+</mapper>
