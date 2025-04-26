@@ -49,4 +49,8 @@ public class PowerBankController {
         powerBankService.updatePowerBankState(powerBankId, 1);
     }
 
+    @PostMapping("/power_bank/exception/{id}/{power_bank_state}")
+    public void exceptionalPowerBank(@PathVariable("id") int powerBankId, @PathVariable("power_bank_state") int powerBankState){
+        powerBankService.updatePowerBankState(powerBankId, powerBankState);
+    }
 }
