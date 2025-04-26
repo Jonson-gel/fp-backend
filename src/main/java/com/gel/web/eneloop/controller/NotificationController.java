@@ -5,11 +5,13 @@ import com.gel.web.eneloop.pojo.Order;
 import com.gel.web.eneloop.service.NotificationService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
+import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.ResponseBody;
 
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 @Controller
@@ -50,5 +52,11 @@ public class NotificationController {
         userController.updateBalance(userId, newBalance);
 
         paymentController.refundPayment(userId, fee);
+    }
+
+    @GetMapping("/notification/{userId}")
+    @ResponseBody
+    public List<Notification> getNotificationByUserId(@PathVariable("userId") int userId){
+        return notificationService.getNotificationByUserId(userId);
     }
 }
