@@ -40,6 +40,12 @@ public class PaymentController {
         paymentService.createTrans(userId, amount, 3);
     }
 
+    @PostMapping("/payment/withdraw/{userId}/{amount}")
+    @ResponseBody
+    public void refundPayment(@PathVariable("userId") int userId, @PathVariable("amount") int amount){
+        paymentService.createTrans(userId, amount, 4);
+    }
+
     @GetMapping("/payment/{userId}")
     @ResponseBody
     public List<Payment> getPaymentByUserId(@PathVariable("userId") int userId){

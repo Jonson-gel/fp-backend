@@ -7,4 +7,6 @@ public interface UserService {
 
     public void updateUserBalance(int userId, int balance);
 
+    public User getUserById(int userId);
+
 }

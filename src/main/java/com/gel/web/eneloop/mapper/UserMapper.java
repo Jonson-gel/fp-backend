@@ -8,6 +8,8 @@ import org.apache.ibatis.annotations.Param;
 public interface UserMapper {
     public User getUserByName(String name);
 
+    public User getUserById(int userId);
+
     public void updateUserBalance(@Param("userId") int userId, @Param("balance") int balance);
     ;
 }

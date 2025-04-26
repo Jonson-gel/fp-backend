@@ -21,4 +21,8 @@ public class UserImpl implements UserService{
         userMapper.updateUserBalance(userId, balance);
     }
 
+    @Override
+    public User getUserById(int userId){
+        return userMapper.getUserById(userId);
+    }
 }

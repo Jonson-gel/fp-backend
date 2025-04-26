@@ -18,6 +18,12 @@ public class UserController {
         return userService.getUserByName(name);
     }
 
+    @GetMapping("user/id/{userId}")
+    @ResponseBody
+    public User getUserById(@PathVariable("userId") int userId){
+        return userService.getUserById(userId);
+    }
+
     @PostMapping("/user/balance/{userId}/{balance}")
     @ResponseBody
     public void updateBalance(@PathVariable("userId") int userId, @PathVariable("balance") int balance) {
