@@ -42,6 +42,7 @@ public class NotificationController {
 
         String content = "Your 'Device Failure' issue about order: " + orderId + " has been addressed, and the refund has been processed. We sincerely apologize for the experience you have encountered.";
         notification.setContent(content);
+        notification.setNotificationState(1);
 
         notificationService.createNotification(notification);
 

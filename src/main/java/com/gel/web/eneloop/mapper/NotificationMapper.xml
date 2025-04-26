@@ -9,7 +9,8 @@
         SELECT notification_id AS notificationId,
                user_id AS userId,
                content,
-               sent_time AS sentTime
+               sent_time AS sentTime,
+               notification_state AS notificationState
         FROM notification;
     </select>
 
@@ -18,7 +19,8 @@
         SELECT notification_id AS notificationId,
                user_id AS userId,
                content,
-               sent_time AS sentTime
+               sent_time AS sentTime,
+               notification_state AS notificationState
         FROM notification
         WHERE notification_id = #{notificationId};
     </select>
@@ -28,15 +30,16 @@
         SELECT notification_id AS notificationId,
                user_id AS userId,
                content,
-               sent_time AS sentTime
+               sent_time AS sentTime,
+               notification_state AS notificationState
         FROM notification
         WHERE user_id = #{userId};
     </select>
 
     <!-- 插入通知 -->
     <insert id="createNotification" parameterType="com.gel.web.eneloop.pojo.Notification">
-        INSERT INTO notification (user_id, content, sent_time)
-        VALUES (#{userId}, #{content}, #{sentTime});
+        INSERT INTO notification (user_id, content, sent_time, notification_state)
+        VALUES (#{userId}, #{content}, #{sentTime}, #{notificationState});
     </insert>
 
     <!-- 更新通知 -->
@@ -44,7 +47,8 @@
         UPDATE notification
         SET user_id = #{userId},
             content = #{content},
-            sent_time = #{sentTime}
+            sent_time = #{sentTime},
+            notification_state AS #{notificationState}
         WHERE notification_id = #{notificationId};
     </update>
 

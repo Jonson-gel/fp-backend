@@ -5,6 +5,7 @@ public class Notification {
     private int userId;
     private String content;
     private int sentTime;
+    private int notificationState;
 
     public int getNotificationId() {
         return notificationId;
@@ -36,6 +37,14 @@ public class Notification {
 
     public void setSentTime(int sentTime) {
         this.sentTime = sentTime;
+    }
+
+    public int getNotificationState() {
+        return notificationState;
+    }
+
+    public void setNotificationState(int notificationState) {
+        this.notificationState = notificationState;
     }
 }
 
