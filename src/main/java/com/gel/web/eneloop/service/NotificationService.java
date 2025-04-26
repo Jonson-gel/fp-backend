@@ -9,4 +9,6 @@ public interface NotificationService {
     public void createNotification(Notification notification);
 
     public List<Notification> getNotificationByUserId(int userId);
+
+    public Notification getNotificationById(int notificationId);
 }

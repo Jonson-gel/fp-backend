@@ -22,4 +22,9 @@ public class NotificationImpl implements NotificationService{
     public List<Notification> getNotificationByUserId(int userId){
         return notificationMapper.getNotificationByUserId(userId);
     }
+
+    @Override
+    public Notification getNotificationById(int notificationId){
+        return notificationMapper.getNotificationById(notificationId);
+    }
 }

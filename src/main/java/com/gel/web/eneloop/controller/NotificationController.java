@@ -60,4 +60,10 @@ public class NotificationController {
     public List<Notification> getNotificationByUserId(@PathVariable("userId") int userId){
         return notificationService.getNotificationByUserId(userId);
     }
+
+    @GetMapping("/notification/single/{notificationId}")
+    @ResponseBody
+    public Notification getNotificationById(@PathVariable("notificationId") int notificationId){
+        return notificationService.getNotificationById(notificationId);
+    }
 }
