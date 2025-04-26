@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"
+        "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.gel.web.eneloop.mapper.MaintenanceLogMapper">
+
+    <!-- 查询所有维护日志 -->
+    <select id="getAllLogs" resultType="com.gel.web.eneloop.pojo.MaintenanceLog">
+        SELECT log_id AS logId,
+               create_time AS createTime,
+               issue_description AS issueDescription,
+               order_id AS orderId,
+               maintenance_state AS maintenanceState
+        FROM maintenance_log;
+    </select>
+
+    <!-- 根据日志 ID 查询 -->
+    <select id="getLogById" parameterType="int" resultType="com.gel.web.eneloop.pojo.MaintenanceLog">
+        SELECT log_id AS logId,
+               create_time AS createTime,
+               issue_description AS issueDescription,
+               order_id AS orderId,
+               maintenance_state AS maintenanceState
+        FROM maintenance_log
+        WHERE log_id = #{logId};
+    </select>
+
+    <!-- 插入新的维护日志 -->
+    <insert id="createLog" parameterType="com.gel.web.eneloop.pojo.MaintenanceLog">
+        INSERT INTO maintenance_log (create_time, issue_description, order_id, maintenance_state)
+        VALUES (#{createTime}, #{issueDescription}, #{orderId}, #{maintenanceState});
+    </insert>
+
+    <!-- 更新维护日志 -->
+    <update id="updateLog" parameterType="com.gel.web.eneloop.pojo.MaintenanceLog">
+        UPDATE maintenance_log
+        SET create_time = #{createTime},
+            issue_description = #{issueDescription},
+            order_id = #{orderId},
+            maintenance_state = #{maintenanceState}
+        WHERE log_id = #{logId};
+    </update>
+
+    <!-- 删除维护日志 -->
+    <delete id="deleteLogById" parameterType="int">
+        DELETE FROM maintenance_log WHERE log_id = #{logId};
+    </delete>
+
+</mapper>
