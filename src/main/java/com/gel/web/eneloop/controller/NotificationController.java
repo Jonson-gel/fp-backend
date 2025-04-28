@@ -58,8 +58,6 @@ public class NotificationController {
     @PostMapping("/notification/loss/{orderId}/{userId}")
     @ResponseBody
     public void lossAddress(@PathVariable("orderId") int orderId, @PathVariable("userId") int userId) {
-        Order order = orderController.getOrderById(orderId);
-
         Notification notification = new Notification();
         notification.setUserId(userId);
 
@@ -78,6 +76,23 @@ public class NotificationController {
         userController.updateBalance(userId, newBalance);
 
         paymentController.penaltyPayment(userId, 20);
+    }
+
+    @PostMapping("/notification/insufficient/{orderId}/{userId}")
+    @ResponseBody
+    public void insufficientNotification(@PathVariable("orderId") int orderId, @PathVariable("userId") int userId) {
+        Notification notification = new Notification();
+        notification.setUserId(userId);
+
+        int timestamp = (int) (System.currentTimeMillis() / 1000);
+        notification.setSentTime(timestamp);
+
+        String content = "Since your balance will not be enough to cover the deposit, we are sorry that we have stopped your current order(Order id: " + orderId + ".";
+        notification.setContent(content);
+        notification.setNotificationState(5);
+
+        notificationService.createNotification(notification);
+
     }
 
     @GetMapping("/notification/{userId}")
