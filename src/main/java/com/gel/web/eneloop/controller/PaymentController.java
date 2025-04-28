@@ -46,6 +46,12 @@ public class PaymentController {
         paymentService.createTrans(userId, amount, 4);
     }
 
+    @PostMapping("/payment/penalty/{userId}/{amount}")
+    @ResponseBody
+    public void penaltyPayment(@PathVariable("userId") int userId, @PathVariable("amount") int amount){
+        paymentService.createTrans(userId, amount, 5);
+    }
+
     @GetMapping("/payment/{userId}")
     @ResponseBody
     public List<Payment> getPaymentByUserId(@PathVariable("userId") int userId){

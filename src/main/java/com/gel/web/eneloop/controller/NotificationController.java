@@ -55,6 +55,31 @@ public class NotificationController {
         paymentController.refundPayment(userId, fee);
     }
 
+    @PostMapping("/notification/loss/{orderId}/{userId}")
+    @ResponseBody
+    public void lossAddress(@PathVariable("orderId") int orderId, @PathVariable("userId") int userId) {
+        Order order = orderController.getOrderById(orderId);
+
+        Notification notification = new Notification();
+        notification.setUserId(userId);
+
+        int timestamp = (int) (System.currentTimeMillis() / 1000);
+        notification.setSentTime(timestamp);
+
+        String content = "Your 'Power Bank Lost' issue about order: " + orderId + " has been addressed, and your deposit has been deducted.";
+        notification.setContent(content);
+        notification.setNotificationState(2);
+
+        notificationService.createNotification(notification);
+
+        int balance = userController.getUserById(userId).getBalance();
+        int newBalance = balance - 20;
+
+        userController.updateBalance(userId, newBalance);
+
+        paymentController.penaltyPayment(userId, 20);
+    }
+
     @GetMapping("/notification/{userId}")
     @ResponseBody
     public List<Notification> getNotificationByUserId(@PathVariable("userId") int userId){

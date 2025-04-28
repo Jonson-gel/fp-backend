@@ -48,7 +48,7 @@ public class OrderController {
         Order order = orderService.getOrderById(orderId);
 
         int endTime = (int)(System.currentTimeMillis() / 1000);
-        int durationMinutes = (endTime - order.getStartTime()) / 60;
+        int durationMinutes = ((endTime - order.getStartTime()) + 60 - 1) / 60;
         int fee = (durationMinutes/60 + (durationMinutes%60 != 0 ? 1 : 0))*2;
 
         order.setEndTime(endTime);
