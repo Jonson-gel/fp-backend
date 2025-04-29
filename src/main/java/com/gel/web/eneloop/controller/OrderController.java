@@ -62,6 +62,12 @@ public class OrderController {
         return result;
     }
 
+    @PostMapping("/order/dispute/{id}")
+    @ResponseBody
+    public void disputeOrder(@PathVariable("id") int orderId){
+        orderService.updateOrderState(orderId, 3);
+    }
+
     @GetMapping("/order/{id}")
     @ResponseBody
     public Order getOrderById(@PathVariable("id") int orderId){
