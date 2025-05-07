@@ -9,7 +9,7 @@ public interface OrderService {
 
     public Order getOrderById(int id);
 
-    public void updateOrderState(int orderId, int state);
+    public void updateOrderState(int orderId, int orderState);
 
     public void endOrder(Order order);
 
